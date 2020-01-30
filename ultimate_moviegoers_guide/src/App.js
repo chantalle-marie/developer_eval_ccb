@@ -11,29 +11,19 @@ import './App.css';
 import apiKey from './apiKey';
 import MovieCard from './components/MovieCard'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
 
 
-
-const originalMovies = [
+// Older array
+/*const originalMovies = [
   {id: 1, title: 'Star Wars'},
   {id: 2, title: 'Star Trek'},
   {id: 3, title: 'Stargate'}
-];
+];*/
 
 class App extends Component {
   state = { movies: [] };
 
+  // Async call to the movie database for movie info
   async componentDidMount(){
     //setTimeout(() => this.setState({movies: originalMovies}), 5000);
     const response = await fetch(
@@ -42,39 +32,25 @@ class App extends Component {
     this.setState({ movies:json.results });
   }
 
-
-
-//Now PLaying:  https://api.themoviedb.org/3/movie/now_playing?api_key=78ec6b1435aa01e301624172e5d69b4f&language=en-US&page=1
-//Popular:  https://api.themoviedb.org/3/movie/popular?api_key=78ec6b1435aa01e301624172e5d69b4f&language=en-US&page=1
+  // Render is a REQUIRED function
   render() {
     const {movies} = this.state;
-    const classes = useStyles();
+    //const classes = useStyles();
 
     return (
-      <div>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Something Here
-            </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-
         <div className="App">
           {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
         </div>
-      </div>
     );
   }
 }
 
-export default makeStyles(useStyles)(App);
+export default App;
 
 
 /*Old Code*/
 
 // <MovieCard movie={movies[0]}/>
+
+//Now PLaying:  https://api.themoviedb.org/3/movie/now_playing?api_key=78ec6b1435aa01e301624172e5d69b4f&language=en-US&page=1
+//Popular:  https://api.themoviedb.org/3/movie/popular?api_key=78ec6b1435aa01e301624172e5d69b4f&language=en-US&page=1
