@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// Note: have to export each component so I can import them in my header.js
+
 export const StyledHeader = styled.div`
   background: #1c1c1c;
   padding: 0 20px;
