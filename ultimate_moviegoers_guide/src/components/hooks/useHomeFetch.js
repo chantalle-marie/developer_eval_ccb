@@ -28,9 +28,9 @@ export const useHomeFetch = () => {
       setLoading(false);
   }
 
-  // TODO: Add Top Rated and Now Playing to the list
+  //https://api.themoviedb.org/3/movie/popular?api_key=78ec6b1435aa01e301624172e5d69b4f&language=en-US&page=1
   useEffect(() => {
-      fetchMovies('${API_URL}movie/popular?api_key=${API_KEY}');
+      fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
   }, [])
 
   return [{ state, loading, error }, fetchMovies];

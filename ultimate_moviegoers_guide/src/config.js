@@ -3,7 +3,7 @@
 // Read more about the API here: https://developers.themoviedb.org/
 
 const API_URL = 'https://api.themoviedb.org/3/';
-//const API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335';
+//const API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335'; // free api key that doesn't work either
 const API_KEY = '78ec6b1435aa01e301624172e5d69b4f'; // Chantalles
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
 // Sizes: w300, w780, w1280, original
