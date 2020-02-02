@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
     API_URL,
     API_KEY,
-    API_BASE_URL,
     POSTER_SIZE,
     BACKDROP_SIZE,
     IMAGE_BASE_URL,
@@ -31,6 +30,18 @@ const Home = () => {
         }, fetchMovies
     ] = useHomeFetch();
     const [searchTerm, setSearchTerm] = useState('');
+
+    // TODO: Is there where I want to show the user a list of movies where they can also search by category?? Now Playing, Popular, Top Rated???
+    // This function will give us a callback to the loadMoreBtn
+    const loadMoreMovies = () => {
+        const searchEndpoint = `${API_URL}search/movie?api_key${API_KEY}&query=${searchTerm}&page=${currentPage + 1}`;
+        const popularEndpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage + 1}`;
+
+        const endpoint = searchTerm ? searchEndpoint : popularEndpoint;
+
+        fetchMovies(endpoint);
+
+    }
 
     //console.log(state); // Before destructoring see line 25
     // Note: Former code in the repo to see the difference within the Grid component
@@ -62,11 +73,14 @@ const Home = () => {
                     />
                 ))}
             </Grid>
-            <MovieThumb />
-            <Spinner />
-            <LoadMoreBtn />
+            {loading && <Spinner />} 
+            {currentPage < totalPages && !loading && (
+                <LoadMoreBtn text="Load More" callback={loadMoreMovies}/>
+            )}
         </>
     )    
 }
+
+// NOTE: {loading && <Spinner />} if loading is true then display spinner. created a shortcircut 
 
 export default Home;
