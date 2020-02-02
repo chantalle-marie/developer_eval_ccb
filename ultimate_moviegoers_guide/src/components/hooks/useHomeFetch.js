@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_URL, API_KEY } from '../../config';
+import { POPULAR_BASE_URL } from '../../config';
 
 export const useHomeFetch = () => {
   const [state, setState] = useState({ movies: [] });
@@ -24,7 +24,7 @@ export const useHomeFetch = () => {
               heroImage: prev.heroImage || result.results[0],
               currentPage: result.page,
               totalPages: result.total_pages,
-          }));
+          }))
 
       } catch(error){
           setError(true);
@@ -33,9 +33,8 @@ export const useHomeFetch = () => {
       setLoading(false);
   }
 
-  //https://api.themoviedb.org/3/movie/popular?api_key=78ec6b1435aa01e301624172e5d69b4f&language=en-US&page=1
   useEffect(() => {
-      fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+      fetchMovies(POPULAR_BASE_URL);
   }, [])
 
   return [{ state, loading, error }, fetchMovies];
