@@ -49,16 +49,16 @@ We did do some work on styling with CSS by first doing inline and then extractin
 
 
 * What design patterns did you use? 
-- I liked how we used some extra packages like Font-Awesome.
+I liked how we used some extra packages like Font-Awesome.
 
 * How would you test your application?
-- I'm not sure. 
+I'm not sure. 
 
 * How do you manage/store application state?
-- I learned about useState to create a state variable. In the useHomeFetch hook, we used three state variables for different functions of the home page. One was called state that was there for when we loaded the data from the movie database. Then there was one called 'loading' which to me seemed in my understanding more like a flag that said "am I loading?" if yes then grab those movies, if not then lets setLoading to false because it means we're not loading anything. The other one was for errors. If we have a problem getting the movies from the database then we want to setError to true because it means we have a problem. 
+I learned about useState to create a state variable. In the useHomeFetch hook, we used three state variables for different functions of the home page. One was called state that was there for when we loaded the data from the movie database. Then there was one called 'loading' which to me seemed in my understanding more like a flag that said "am I loading?" if yes then grab those movies, if not then lets setLoading to false because it means we're not loading anything. The other one was for errors. If we have a problem getting the movies from the database then we want to setError to true because it means we have a problem. 
 
 * What ways could you structure the code to make it easy to understand and maintain?
-- Like I said above breaking it down into small parts with similar names to matchup the imports. 
+Like I said above breaking it down into small parts with similar names to matchup the imports. 
 
 * What other considerations and tradeoffs did you make when building the application?
-- I'm still new so I'm not sure I have the scope of everything yet to be fully educated on what the tradeoffs would be.
+I'm still new so I'm not sure I have the scope of everything yet to be fully educated on what the tradeoffs would be.
